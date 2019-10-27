@@ -19,4 +19,23 @@
         android:layout_marginBottom="20dp"
         android:text="Parse"/>
 
+    <TextView
+        android:id="@+id/text_view_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No Data!"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/button_parse"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:scaleY=".5"
+        android:scaleX=".5"
+        android:visibility="gone"/>
+
 </RelativeLayout>

@@ -6,6 +6,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class Medicine {
 
+    // Database Table Name
+    public static final String TABLE_NAME = "medicines";
+
+    // Table Column Names
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_DRUGS = "drugs";
+    public static final String COLUMN_INDICATIONS = "indications";
+    public static final String COLUMN_THERAPEUTIC_CLASS = "therapeutic_class";
+    public static final String COLUMN_PHARMACOLOGY = "pharmacology";
+    public static final String COLUMN_DOSAGE = "dosage";
+    public static final String COLUMN_INTERACTION = "interaction";
+    public static final String COLUMN_CONTRANDICATIONS = "contraindications";
+    public static final String COLUMN_SIDE_EFFECTS = "side_effects";
+    public static final String COLUMN_PREGNANCY = "pregnancy";
+    public static final String COLUMN_PRECAUTIONS = "precautions";
+    public static final String COLUMN_STORAGE = "storage";
+
     @SerializedName("id")
     @Expose
     private String id;
