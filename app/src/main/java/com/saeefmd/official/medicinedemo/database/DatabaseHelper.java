@@ -83,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Medicine> getAllMediciness() {
+    public List<Medicine> getAllMedicines() {
         List<Medicine> medicineList = new ArrayList<>();
 
         // Select All Query
@@ -125,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int getMedicinesCount() {
 
-        String countQuery = "SELECT  * FROM " + Medicine.TABLE_NAME;
+        String countQuery = "SELECT * FROM " + Medicine.TABLE_NAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
@@ -145,5 +145,66 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + Medicine.TABLE_NAME);
 
         db.close();
+    }
+
+    public List<String> getAllDrugNames() {
+
+        List<String> drugNameList = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + Medicine.TABLE_NAME + " ORDER BY " +
+                Medicine.COLUMN_ID + " DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                drugNameList.add(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_DRUGS)));
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return drugNameList;
+    }
+
+    public Medicine getMedicine(String drugName) {
+        // get readable database as we are not inserting anything
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(Medicine.TABLE_NAME,
+                new String[]{Medicine.COLUMN_ID,Medicine.COLUMN_INDICATIONS, Medicine.COLUMN_THERAPEUTIC_CLASS, Medicine.COLUMN_DOSAGE,
+                Medicine.COLUMN_DRUGS, Medicine.COLUMN_STORAGE, Medicine.COLUMN_PRECAUTIONS, Medicine.COLUMN_PREGNANCY, Medicine.COLUMN_SIDE_EFFECTS,
+                Medicine.COLUMN_CONTRANDICATIONS, Medicine.COLUMN_INTERACTION, Medicine.COLUMN_PHARMACOLOGY},
+                Medicine.COLUMN_DRUGS + "=?",
+                new String[]{String.valueOf(drugName)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // prepare note object
+        Medicine medicine = new Medicine();
+        medicine.setId(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_ID)));
+        medicine.setDrugs(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_DRUGS)));
+        medicine.setIndications(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_INDICATIONS)));
+        medicine.setTherapeuticClass(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_THERAPEUTIC_CLASS)));
+        medicine.setPharmacology(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_PHARMACOLOGY)));
+        medicine.setDosage(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_DOSAGE)));
+        medicine.setInteraction(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_INTERACTION)));
+        medicine.setContraindications(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_CONTRANDICATIONS)));
+        medicine.setSideEffects(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_SIDE_EFFECTS)));
+        medicine.setPregnancy(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_PREGNANCY)));
+        medicine.setPrecautions(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_PRECAUTIONS)));
+        medicine.setStorage(cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_STORAGE)));
+
+        // close the db connection
+        cursor.close();
+
+        return medicine;
     }
 }

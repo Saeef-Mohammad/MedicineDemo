@@ -23,6 +23,24 @@ public class Medicine {
     public static final String COLUMN_PRECAUTIONS = "precautions";
     public static final String COLUMN_STORAGE = "storage";
 
+    /*public Medicine(String id, String drugs, String indications, String therapeuticClass, String pharmacology,
+                    String dosage, String interaction, String contraindications, String sideEffects, String pregnancy,
+                    String precautions, String storage) {
+
+        this.id = id;
+        this.drugs = drugs;
+        this.indications = indications;
+        this.therapeuticClass = therapeuticClass;
+        this.pharmacology = pharmacology;
+        this.dosage = dosage;
+        this.interaction = interaction;
+        this.contraindications = contraindications;
+        this.sideEffects = sideEffects;
+        this.pregnancy = pregnancy;
+        this.precautions = precautions;
+        this.storage = storage;
+    }*/
+
     @SerializedName("id")
     @Expose
     private String id;

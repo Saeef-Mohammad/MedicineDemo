@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SearchActivity">
+
+    <AutoCompleteTextView
+        android:id="@+id/auto_text_search_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/button_search"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:text="Search"
+        android:textAllCaps="false"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/button_search"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_details_drug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/text_details_indications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_therapeutic_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_pharmacology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_dosage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_interaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_contraindications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_side_effects"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_pregnancy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_precautions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+            <TextView
+                android:id="@+id/text_details_storage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/drug_details_text_style"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

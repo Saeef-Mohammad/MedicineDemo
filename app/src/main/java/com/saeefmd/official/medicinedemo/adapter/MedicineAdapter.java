@@ -38,8 +38,8 @@ public class MedicineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         ((MyViewHolder)holder).drugText.setText(mListMedicines.get(position).getDrugs());
         ((MyViewHolder)holder).pharmacologyText.setText(mListMedicines.get(position).getPharmacology());
-        ((MyViewHolder)holder).sideEffectText.setText(mListMedicines.get(position).getSideEffects());
-        ((MyViewHolder)holder).storageText.setText(mListMedicines.get(position).getStorage());
+        /*((MyViewHolder)holder).sideEffectText.setText(mListMedicines.get(position).getSideEffects());
+        ((MyViewHolder)holder).storageText.setText(mListMedicines.get(position).getStorage());*/
     }
 
     @Override
@@ -51,16 +51,12 @@ public class MedicineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         TextView drugText;
         TextView pharmacologyText;
-        TextView sideEffectText;
-        TextView storageText;
 
         private MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             drugText = itemView.findViewById(R.id.text_view_drug);
             pharmacologyText = itemView.findViewById(R.id.text_view_pharmacology);
-            sideEffectText = itemView.findViewById(R.id.text_view_side_effects);
-            storageText = itemView.findViewById(R.id.text_view_storage);
         }
     }
 }

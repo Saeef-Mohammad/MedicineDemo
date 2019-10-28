@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.saeefmd.official.medicinedemo.R;
 import com.saeefmd.official.medicinedemo.adapter.MedicineAdapter;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerViewMedicines;
     private TextView mTextViewNoData;
     private ProgressBar mProgressBar;
+    private FloatingActionButton mFabSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         mTextViewNoData = findViewById(R.id.text_view_no_data);
         mProgressBar = findViewById(R.id.progress_bar);
+        mFabSearch = findViewById(R.id.fab_search);
 
         mQueue = Volley.newRequestQueue(MainActivity.this);
 
@@ -74,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
                 mDatabaseHelper.deleteAllMedicines();
 
                 JsonParse();
+            }
+        });
+
+        mFabSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -132,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             mTextViewNoData.setVisibility(View.GONE);
             mProgressBar.setVisibility(View.GONE);
 
-            mMedicineAdapter = new MedicineAdapter(mDatabaseHelper.getAllMediciness(), MainActivity.this);
+            mMedicineAdapter = new MedicineAdapter(mDatabaseHelper.getAllMedicines(), MainActivity.this);
             mRecyclerViewMedicines.setAdapter(mMedicineAdapter);
         } else {
 
